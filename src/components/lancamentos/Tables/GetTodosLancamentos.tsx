@@ -62,13 +62,13 @@ export default function LancamentosClientPage() {
     
     return (
         <div className="container mx-auto p-4">
-             <h1 className="text-4xl font-bold mb-6 text-indigo-700">📋 Lançamentos Financeiros</h1>
+            <h1 className="text-4xl font-bold mb-6 text-indigo-700">📋 Lançamentos Financeiros</h1>
+            
+            <CreateLancamentoForm />
 
-             <CreateLancamentoForm />
-
-             {/* Condição para exibir a lista ou mensagem de vazio */}
-             {lancamentos.length === 0 ? (
-                 <p className="text-gray-500 text-lg">Nenhum lançamento encontrado.</p>
+            {/* Condição para exibir a lista ou mensagem de vazio */}
+            {lancamentos.length === 0 ? (
+                <p className="text-gray-500 text-lg">Nenhum lançamento encontrado.</p>
              ) : (
                 /* ... (Sua tabela de listagem, usando `lancamentos` do estado) ... */
                 <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
@@ -122,7 +122,7 @@ export default function LancamentosClientPage() {
                         </tbody>
                     </table>
                 </div>
-             )}
+            )}
         </div>
     );
 }
