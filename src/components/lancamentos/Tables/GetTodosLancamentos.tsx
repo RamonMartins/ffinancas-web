@@ -7,12 +7,16 @@ import CreateLancamentoForm from '@/components/lancamentos/Forms/FormLancamento'
 
 let API_BASE_URL: string | undefined = undefined;
 
+console.log("INICIO", API_BASE_URL);
+
 if (process.env.ENVIRONMENT !== 'production') {
     API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
     API_BASE_URL = `${API_BASE_URL}/lancamentos/listar_todos`;
 } else {
     API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+    console.log("MEIO", API_BASE_URL);
     API_BASE_URL = `https://${API_BASE_URL}/lancamentos/listar_todos`;
+    console.log("FIM", API_BASE_URL);
 }
 
 
