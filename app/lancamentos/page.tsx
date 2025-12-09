@@ -1,6 +1,10 @@
 // app/lancamentos/page.tsx
 import { LancamentoRead } from '@/types/lancamentos'; // Certifique-se de que o caminho está correto
 
+// Força renderização dinâmica (SSR) para esta rota, evitando tentativas
+// de pré-renderização estática quando fetch é usado com comportamento dinâmico.
+export const dynamic = 'force-dynamic';
+
 // Define a URL base da sua API FastAPI
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL; // Mude para a URL real da sua API
 
