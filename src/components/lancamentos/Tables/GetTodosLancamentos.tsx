@@ -5,7 +5,16 @@ import React, { useState, useEffect } from 'react';
 import { LancamentoRead } from '@/@types/lancamentos';
 import CreateLancamentoForm from '@/components/lancamentos/Forms/FormLancamento';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+let API_BASE_URL: string | undefined = undefined;
+
+if (process.env.ENVIRONMENT !== 'production') {
+    API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+    API_BASE_URL = `${API_BASE_URL}/lancamentos/listar_todos`;
+} else {
+    API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+    API_BASE_URL = `https://${API_BASE_URL}/lancamentos/listar_todos`;
+}
+
 
 // Função utilitária para buscar (sem a lógica de retry complexa, para simplificar)
 async function fetchLancamentos(): Promise<LancamentoRead[]> {
@@ -16,7 +25,7 @@ async function fetchLancamentos(): Promise<LancamentoRead[]> {
     
     // ATENÇÃO: Se usar http://localhost:8000, isso deve funcionar no CLIENTE.
     // Se usar a URL do Railway, o cliente fará a requisição diretamente.
-    const res = await fetch(`http://${API_BASE_URL}/lancamentos/listar_todos`, {
+    const res = await fetch(API_BASE_URL, {
          // O cache no CSR é gerenciado pelo navegador
     });
 
