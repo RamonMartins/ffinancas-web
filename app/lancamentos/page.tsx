@@ -109,6 +109,7 @@ export default async function LancamentosPage() {
               ))}
             </tbody>
           </table>
+          {API_BASE_URL}
         </div>
       )}
     </div>
