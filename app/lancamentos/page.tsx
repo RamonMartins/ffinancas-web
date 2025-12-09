@@ -14,7 +14,7 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL; // Mude para a URL re
 async function getLancamentos(): Promise<LancamentoRead[]> {
   // Configurações de cache do Next.js: 'no-store' garante que a busca sempre ocorrerá
   // Se quiser cachear por um tempo, use { next: { revalidate: 60 } }
-  const res = await fetch(`${API_BASE_URL}/lancamentos/listar_todos`, {
+  const res = await fetch(`http://${API_BASE_URL}/lancamentos/listar_todos`, {
     cache: 'no-store', 
   });
 
