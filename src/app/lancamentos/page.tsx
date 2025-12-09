@@ -4,9 +4,6 @@
 import LancamentosClientPage from '@/components/lancamentos/Tables/GetTodosLancamentos';
 import { Metadata } from 'next';
 
-// Define a URL base (mantemos a variável para o caso de outros usos no futuro)
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
-
 /**
  * ATENÇÃO: Removemos a função getLancamentos e o async/await.
  * Tudo será feito no cliente.
