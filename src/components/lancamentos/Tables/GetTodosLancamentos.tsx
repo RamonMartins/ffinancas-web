@@ -7,12 +7,12 @@ import CreateLancamentoForm from '@/components/lancamentos/Forms/FormLancamento'
 
 let API_BASE_URL: string | undefined = undefined;
 
-if (process.env.NEXT_PUBLIC_ENVIRONMENT !== 'production') {
-    API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
-    API_BASE_URL = `${API_BASE_URL}/lancamentos/listar_todos`;
-} else {
+if (process.env.NEXT_PUBLIC_ENVIRONMENT == 'production') {
     API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
     API_BASE_URL = `https://${API_BASE_URL}/lancamentos/listar_todos`;
+} else {
+    API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+    API_BASE_URL = `${API_BASE_URL}/lancamentos/listar_todos`;
 }
 
 
