@@ -13,7 +13,8 @@ interface LancamentoCreate {
 
 // Define a URL base da sua API FastAPI
 let API_BASE_URL: string | undefined = undefined;
-
+console.log('API_BASE_URL before setting:', API_BASE_URL);
+console.log('Current ENVIRONMENT:', process.env.NEXT_PUBLIC_ENVIRONMENT);
 if (process.env.NEXT_PUBLIC_ENVIRONMENT == 'production') {
     API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
     API_BASE_URL = `https://${API_BASE_URL}/lancamentos/create`;
@@ -21,6 +22,7 @@ if (process.env.NEXT_PUBLIC_ENVIRONMENT == 'production') {
     API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
     API_BASE_URL = `${API_BASE_URL}/lancamentos/create`;
 }
+console.log('API_BASE_URL after setting:', API_BASE_URL);
 
 export default function CreateLancamentoForm() {
     const router = useRouter();
