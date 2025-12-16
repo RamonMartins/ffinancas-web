@@ -1,7 +1,6 @@
 // src/app/cadastrar/page.tsx
 
 import type { Metadata } from "next";
-import CadastroForm from "./SignUpForm"
 import Logo from "../../components/general/logo"
 import "./styles.css";
 
@@ -20,7 +19,6 @@ export default function CadastrarPage() {
                     <span className="text-white place-self-center col-start-1 row-start-1 z-10">Cadastrar</span>
                 </div>
                 <div className="p-[10px]">
-                    <CadastroForm />
                 </div>
             </div>
         </div>
