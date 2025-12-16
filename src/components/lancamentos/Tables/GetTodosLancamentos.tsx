@@ -1,9 +1,9 @@
-// components/lancamentos/Tables/LancamentosTodosTable.tsx
+// components/lancamentos/actions/GetTodosLancamentos.tsx
 "use client";
 
 import React, { useState, useEffect } from 'react';
 import { LancamentoRead } from '@/@types/lancamentos';
-import CreateLancamentoForm from '@/components/lancamentos/Forms/LancamentoForm';
+import CreateLancamentoForm from '@/components/lancamentos/Forms/FormLancamento';
 
 let API_BASE_URL: string | undefined = undefined;
 
