@@ -9,7 +9,11 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+<<<<<<< HEAD
     "next": "^16.0.10",
+=======
+    "next": "16.0.8",
+>>>>>>> parent of b355124 (testes)
     "react": "19.2.1",
     "react-dom": "19.2.1"
   },
