@@ -2,28 +2,10 @@
 "use client";
 
 import React, { useState } from 'react';
-// Usaremos 'next/navigation' para forçar a revalidação/refresh da página
-import { useRouter } from 'next/navigation';
+import { CreateLancamento } from '@/actions/lancamentos'
 
-// Padrão de dado que você enviará para a API
-interface LancamentoCreate {
-    titulo: string;
-    is_active: boolean;
-}
-
-// Define a URL base da sua API FastAPI
-let API_BASE_URL: string | undefined = undefined;
-
-if (process.env.NEXT_PUBLIC_ENVIRONMENT == 'production') {
-    API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
-    API_BASE_URL = `https://${API_BASE_URL}/lancamentos/create`;
-} else {
-    API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
-    API_BASE_URL = `${API_BASE_URL}/lancamentos/create`;
-}
 
 export default function CreateLancamentoForm() {
-    const router = useRouter();
     const [titulo, setTitulo] = useState('');
     const [isActive, setIsActive] = useState(true);
     const [loading, setLoading] = useState(false);
@@ -34,45 +16,22 @@ export default function CreateLancamentoForm() {
         setLoading(true);
         setMessage(null);
 
-        if (!API_BASE_URL) {
-            setMessage({ type: 'error', text: 'Erro: API_BASE_URL não configurada.' });
-            setLoading(false);
-            return;
-        }
-
-        const newLancamento: LancamentoCreate = {
+        const result = await CreateLancamento({
             titulo: titulo,
-            is_active: isActive,
-        };
+            is_active: isActive
+        });
 
-        try {
-            const res = await fetch(API_BASE_URL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(newLancamento),
-            });
-
-            if (res.ok) {
-                setMessage({ type: 'success', text: 'Lançamento criado com sucesso!' });
-                setTitulo('');
-                setIsActive(true);
-                
-                // Força o Next.js a revalidar e recarregar a rota /lancamentos
-                // Isso fará com que o Server Component (page.tsx) execute getLancamentos novamente.
-                router.refresh(); 
-
-            } else {
-                const errorData = await res.json();
-                setMessage({ type: 'error', text: `Erro (${res.status}): ${errorData.detail || 'Falha ao criar o lançamento.'}` });
-            }
-        } catch (error) {
-            console.error(error);
-            setMessage({ type: 'error', text: 'Erro de conexão ou cold start da API. Tente novamente.' });
-        } finally {
-            setLoading(false);
+        if (result.success) {
+            // Informa mensagem de sucesso
+            setMessage({type: 'success', text: 'Lançamento criado com sucesso!'});
+            // Limpa os dois campos
+            setTitulo('');
+            setIsActive(true);
+        } else {
+            setMessage({type: 'error', text: result.error || 'Erro desconhecido'});
         }
+
+        setLoading(false);
     };
 
     return (

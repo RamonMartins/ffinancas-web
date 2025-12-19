@@ -1,6 +1,7 @@
 // app/lancamentos/page.tsx
-import { LancamentoRead } from '@/@types/lancamentos'; // Certifique-se de que o caminho está correto
+import { LancamentoReadType } from '@/@types/lancamentos';
 import { AllLancamentos } from '@/actions/lancamentos';
+import CreateLancamentoForm from '@/components/lancamentos/Forms/LancamentoForm'
 
 // Adicione metadados específicos para esta página
 export const metadata = {
@@ -15,7 +16,7 @@ export const dynamic = 'force-dynamic';
  * Componente da Página de Listagem de Lançamentos
  */
 export default async function LancamentosPage() {
-  let lancamentos: LancamentoRead[] = [];
+  let lancamentos: LancamentoReadType[] = [];
   let error: string | null = null;
 
   try {
@@ -29,6 +30,8 @@ export default async function LancamentosPage() {
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-4xl font-bold mb-6 text-indigo-700">📋 Lançamentos Financeiros</h1>
+
+      <CreateLancamentoForm />
       
       {/* Exibe erro se houver falha na busca */}
       {error && (
