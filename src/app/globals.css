@@ -139,6 +139,37 @@ body {
   font-family: var(--font-rochester), cursive;
 }
 
+.div-col-global {
+  @apply flex flex-col gap-1;
+}
+
+.div-row-global {
+  @apply flex flex-row gap-1;
+}
+
+.input-global {
+  @apply w-full h-10 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-300;
+}
+
+.select-global {
+  @apply w-full h-10 px-3 py-2 border border-gray-300 rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-400;
+  
+}
+
+.select-placeholder-global {
+  @apply text-gray-300;
+}
+
+.checkbox-global {
+  @apply w-4 h-4 border-gray-300 rounded text-blue-600 focus:ring-blue-500;
+}
+
+.btn-azul-global {
+  @apply bg-blue-500 text-white font-bold py-2 px-5 rounded-md hover:bg-blue-700 transition-colors shadow-md;
+}
+
+
+
 /* =============== START EXEMPLOS ================ */
 /* Condição para telas menores que 400px */
 @media (max-width: 400px) {

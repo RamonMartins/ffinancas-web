@@ -12,7 +12,7 @@ export default function Logo()  {
                     FF
                 </span>
             </div>
-            <div className='flex bg-[#cbcbcb] w-[3px] h-[40px] min-width-to-hide'></div>
+            <div className='flex bg-[#cbcbcb] w-0.75 h-10 min-width-to-hide'></div>
             <div className='flex flex-col text-[18px] leading-none'>
                 <span>
                     Ferreira
