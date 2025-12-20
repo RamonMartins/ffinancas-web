@@ -26,7 +26,7 @@ export async function AllLancamentos(): Promise<TypeLancamento.LancamentoReadTyp
 
     // Configurações de cache do Next.js: 'no-store' garante que a busca sempre ocorrerá
     // Se quiser cachear por um tempo, use { next: { revalidate: 60 } }
-    const res = await fetch(`${API_BASE_URL}/lancamentos/listar_todos`, {
+    const res = await fetch(`${API_BASE_URL}/lancamentos/list_all`, {
         cache: 'no-store'
     });
 

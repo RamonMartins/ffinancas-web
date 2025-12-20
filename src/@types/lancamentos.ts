@@ -1,7 +1,7 @@
 // types/lancamentos.ts
 
 export interface LancamentoReadType {
-    id: number;
+    id: string;
     titulo: string;
     is_active: boolean;
     created_at: string;
