@@ -15,7 +15,7 @@ if (process.env.NEXT_PUBLIC_ENVIRONMENT == 'production') {
     API_BASE_URL = process.env.NEXT_PUBLIC_API_LOCAL_URL;
     API_BASE_URL = `${API_BASE_URL}`;
 }
-
+console.log(API_BASE_URL);
 // ===> Action de Buscar todos os Lançamentos
 export async function AllLancamentos(): Promise<TypeLancamento.LancamentoReadType[]> {
 
