@@ -9,8 +9,8 @@ import { revalidatePath } from 'next/cache';
 let API_BASE_URL: string | undefined = undefined;
 
 if (process.env.NEXT_PUBLIC_ENVIRONMENT == 'production') {
-    API_BASE_URL = process.env.API_INTERNAL_URL;
-    API_BASE_URL = `http://${API_BASE_URL}:${process.env.API_PORT}`;
+    API_BASE_URL = process.env.NEXT_PUBLIC_API_URL_PUBLIC;
+    API_BASE_URL = `http://${API_BASE_URL}`;
 } else {
     API_BASE_URL = process.env.NEXT_PUBLIC_API_LOCAL_URL;
     API_BASE_URL = `${API_BASE_URL}`;
