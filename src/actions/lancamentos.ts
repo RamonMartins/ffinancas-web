@@ -10,12 +10,12 @@ let API_BASE_URL: string | undefined = undefined;
 
 if (process.env.NEXT_PUBLIC_ENVIRONMENT == 'production') {
     API_BASE_URL = process.env.NEXT_PUBLIC_API_URL_PUBLIC;
-    API_BASE_URL = `http://${API_BASE_URL}`;
+    API_BASE_URL = `https://${API_BASE_URL}`;
 } else {
     API_BASE_URL = process.env.NEXT_PUBLIC_API_LOCAL_URL;
     API_BASE_URL = `${API_BASE_URL}`;
 }
-console.log(API_BASE_URL);
+
 // ===> Action de Buscar todos os Lançamentos
 export async function AllLancamentos(): Promise<TypeLancamento.LancamentoReadType[]> {
 
