@@ -26,7 +26,7 @@ export async function AllLancamentos(): Promise<TypeLancamento.LancamentoReadTyp
 
     // Configurações de cache do Next.js: 'no-store' garante que a busca sempre ocorrerá
     // Se quiser cachear por um tempo, use { next: { revalidate: 60 } }
-    const res = await fetch(`${API_BASE_URL}/lancamentos/list_all`, {
+    const res = await fetch(`${API_BASE_URL}/lancamentos`, {
         cache: 'no-store'
     });
 
@@ -41,7 +41,7 @@ export async function AllLancamentos(): Promise<TypeLancamento.LancamentoReadTyp
 // ===> Action de Criar um Lançamento
 export async function CreateLancamento(data: TypeLancamento.LancamentoCreateType) {
     try {
-        const res = await fetch(`${API_BASE_URL}/lancamentos/create`, {
+        const res = await fetch(`${API_BASE_URL}/lancamentos`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data),
