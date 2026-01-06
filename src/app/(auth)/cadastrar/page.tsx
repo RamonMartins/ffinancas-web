@@ -2,13 +2,18 @@
 
 import type { Metadata } from "next";
 import CadastroForm from "@/components/auth/CadastroForm";
+import { AllGruposFamiliares } from '@/actions/grupos_familiares';
 
 export const metadata: Metadata = {
     title: "Cadastrar",
 }
 
-export default function CadastrarPage() {
+//export const dynamic = 'force-dynamic';
+
+export default async function CadastrarPage() {
+    const grupos_familiares = await AllGruposFamiliares();
+
     return (
-        <CadastroForm />
+        <CadastroForm grupos={grupos_familiares} />
     );
 }
