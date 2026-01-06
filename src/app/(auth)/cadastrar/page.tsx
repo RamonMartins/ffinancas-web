@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     title: "Cadastrar",
 }
 
-//export const dynamic = 'force-dynamic';
+export const dynamic = 'force-dynamic';
 
 export default async function CadastrarPage() {
     const grupos_familiares = await AllGruposFamiliares();
