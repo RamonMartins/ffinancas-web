@@ -5,6 +5,7 @@
 import { client_axios } from "@/lib/axios";
 import { redirect } from "next/navigation";
 import { ActionState } from "@/@types/forms";
+import { cookies } from "next/headers";
 
 export async function cadastrarUsuario(prevState: any, formData: FormData): Promise<ActionState> {
     // Pegamos os dados do formulário
@@ -66,4 +67,50 @@ export async function cadastrarUsuario(prevState: any, formData: FormData): Prom
     }
     
     redirect("/entrar");
+}
+
+
+export async function logarUsuario(prevState: any, formData: FormData): Promise<ActionState> {
+    const email = formData.get("email");
+    const password = formData.get("senha");
+
+    const values = {
+        email_return: email as string
+    };
+
+    try {
+        const loginData = new URLSearchParams();
+        loginData.append("username", email as string);
+        loginData.append("password", password as string);
+        
+        const response = await client_axios.post("/auth/login", loginData, {
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            }
+        });
+
+        // Extrai o token da resposta
+        const token = response.data.access_token;
+
+        // Salva o token nos cookies para as próximas requisições
+        const cookieStore = await cookies();
+
+        cookieStore.set("auth_token", token, {
+            httpOnly: true,
+            secure: process.env.NEXT_PUBLIC_ENVIRONMENT === "production",
+            maxAge: 86400, // 24 horas
+            path: "/"
+        });
+
+    } catch (error: any) {
+        const mensagemErro = error.response?.data?.detail === "LOGIN_BAD_CREDENTIALS" ? "E-mail ou senha incorretos." : "Erro ao realizar login. Tente novamente";
+
+        return {
+            error: mensagemErro,
+            status: error.response?.status || 500,
+            payload: values
+        }
+    }
+
+    redirect("/painel");
 }

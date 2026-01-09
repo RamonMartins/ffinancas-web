@@ -1,13 +1,14 @@
 // src/app/(auth)/entrar/page.tsx
 
 import { Metadata } from 'next'
+import EntrarForm from '@/components/auth/EntrarForm';
 
 export const metadata: Metadata = {
     title: 'Entrar',
 }
 
-export default function EntrarPage() {
+export default async function EntrarPage() {
     return (
-        <h1>oi</h1>
+        <EntrarForm />
     );
 }

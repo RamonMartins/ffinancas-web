@@ -1,10 +1,10 @@
-.max-w-97-500 {
-    max-width: 500px;
+.max-w-97-400 {
+    max-width: 400px;
 }
 
-/* Condição para telas menores que 515px */
-@media (max-width: 515px) {
-    .max-w-97-500 {
+/* Condição para telas menores que 415px */
+@media (max-width: 415px) {
+    .max-w-97-400 {
         max-width: 97%;
     }
 }

@@ -5,7 +5,7 @@ import React, { useActionState, useEffect, useState } from 'react';
 import { Info } from 'lucide-react';
 import Link from 'next/link';
 import { GrupoFamiliarRead } from '@/@types/grupos_familiares';
-import { cadastrarUsuario } from '@/actions/usuarios';
+import { cadastrarUsuario } from '@/actions/auth';
 
 export default function CadastroForm({ grupos }: { grupos: GrupoFamiliarRead[] }) {
     const [isLider, setIsLider] = useState(false)
