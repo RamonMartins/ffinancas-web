@@ -1,8 +1,8 @@
 // src/components/auth/CadastroForm.tsx
 "use client";
 
-import React, { useActionState, useEffect, useState } from 'react';
-import { Info } from 'lucide-react';
+import { useActionState, useEffect, useState } from 'react';
+import { Info, RefreshCw } from 'lucide-react';
 import Link from 'next/link';
 import { GrupoFamiliarRead } from '@/@types/grupos_familiares';
 import { cadastrarUsuario } from '@/actions/auth';
@@ -14,7 +14,7 @@ export default function CadastroForm({ grupos }: { grupos: GrupoFamiliarRead[] }
     // 1- Capturar e retornar o resultado da action cadastrarUsuario
     // 2- Informar se a action esta ou não em Loading
     // 3- Ao retornar o resultado, ela também retorna os dados preenchidos anteriormente para aplicar nos campos 
-    const [state, formAction] = useActionState(cadastrarUsuario, {
+    const [state, formAction, isPending] = useActionState(cadastrarUsuario, {
         error: null,
         status: 0
     })
@@ -135,9 +135,11 @@ export default function CadastroForm({ grupos }: { grupos: GrupoFamiliarRead[] }
             <div className='div-col-global items-end'>
                 <button
                     type='submit'
-                    className='btn-azul-global'
+                    disabled={isPending}
+                    className='btn-azul-global gap-2 disabled:opacity-50'
                 >
-                    Cadastrar
+                    {isPending && (<RefreshCw className="w-4 h-4 animate-spin" />)}
+                    {isPending ? "Cadastrando" : "Cadastrar"}
                 </button>
                 <Link href='/entrar' className='text-blue-700 text-[14px] underline'>
                     Já possui cadastro? Entre.

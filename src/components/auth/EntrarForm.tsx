@@ -4,9 +4,10 @@
 import Link from "next/link";
 import { useActionState } from "react";
 import { logarUsuario } from "@/actions/auth";
+import { RefreshCcw, RefreshCw } from "lucide-react";
 
 export default function EntrarForm() {
-    const [state, formAction] = useActionState(logarUsuario, {
+    const [state, formAction, isPending] = useActionState(logarUsuario, {
         error: null,
         status: 0
     })
@@ -48,9 +49,11 @@ export default function EntrarForm() {
             <div className="div-col-global items-end">
                 <button
                     type="submit"
-                    className="btn-azul-global"
+                    disabled={isPending}
+                    className="btn-azul-global gap-2 disabled:opacity-50"
                 >
-                    Entrar
+                    {isPending && (<RefreshCw className="w-4 h-4 animate-spin" />)}
+                    {isPending ? "Entrando..." : "Entrar"}
                 </button>
                 <Link
                     href="/cadastrar"
