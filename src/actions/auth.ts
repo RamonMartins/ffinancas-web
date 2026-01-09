@@ -1,4 +1,4 @@
-// src/actions/cadastrar.ts
+// src/actions/auth.ts
 
 "use server";
 
@@ -74,6 +74,8 @@ export async function logarUsuario(prevState: any, formData: FormData): Promise<
     const email = formData.get("email");
     const password = formData.get("senha");
 
+    let token: string;
+
     const values = {
         email_return: email as string
     };
@@ -90,7 +92,7 @@ export async function logarUsuario(prevState: any, formData: FormData): Promise<
         });
 
         // Extrai o token da resposta
-        const token = response.data.access_token;
+        token = response.data.access_token;
 
         // Salva o token nos cookies para as próximas requisições
         const cookieStore = await cookies();
@@ -112,5 +114,16 @@ export async function logarUsuario(prevState: any, formData: FormData): Promise<
         }
     }
 
-    redirect("/painel");
+    const userResponse = await client_axios.get("/usuarios/me", {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    });
+    const userData = userResponse.data;
+
+    if (userData.lider_familiar === true && userData.grupo_id === null) {
+        redirect("/grupo-familiar")
+    } else {
+        redirect("/painel");
+    }
 }
