@@ -7,14 +7,14 @@ import  '../../app/globals.css';
 
 export default function LogoLite()  {
     return(
-        <div className="flex justify-start">
-            <Link href="/">
-                <div className='flex col-start-1 row-start-1 z-0 font-rochester text-white flex-col text-[18px] leading-none'>
+        <div className="flex w-fit col-start-1 row-start-1">
+            <Link href="/" className='flex'>
+                <div className='flex flex-col font-rochester text-white text-[18px] leading-none'>
                     <span>Ferreira</span>
                     <span>Finanças</span>
                 </div>
+                <div className='w-px h-9 bg-white opacity-50 mx-2' />
             </Link>
-            <div className='w-px h-9 bg-white opacity-50 mx-2' />
         </div>
     );
 }

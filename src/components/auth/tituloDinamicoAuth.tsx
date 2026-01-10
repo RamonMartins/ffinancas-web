@@ -16,8 +16,8 @@ export default function TituloDinamicoAuth() {
     const currentTitle = titles[pathname] || 'Bem-vindo';
 
     return (
-        <div className='flex justify-center'>
-            <span className="text-white text-[20px] font-semibold place-self-center col-start-1 row-start-1 z-10">
+        <div className='flex w-fit col-start-1 row-start-1 place-self-center'>
+            <span className="text-white text-[20px] font-semibold">
                 {currentTitle}
             </span>
         </div>
