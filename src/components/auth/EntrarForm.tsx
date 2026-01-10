@@ -4,7 +4,7 @@
 import Link from "next/link";
 import { useActionState } from "react";
 import { logarUsuario } from "@/actions/auth";
-import { RefreshCcw, RefreshCw } from "lucide-react";
+import { RefreshCw } from "lucide-react";
 
 export default function EntrarForm() {
     const [state, formAction, isPending] = useActionState(logarUsuario, {

@@ -7,8 +7,10 @@ import { redirect } from "next/navigation";
 import { ActionState } from "@/@types/forms";
 import { cookies } from "next/headers";
 
+// ####################
+// ==> Action para Cadastrar o usuário
+// ####################
 export async function cadastrarUsuario(prevState: any, formData: FormData): Promise<ActionState> {
-    // Pegamos os dados do formulário
     const nome = formData.get("nome");
     const email = formData.get("email");
     let grupo_id = formData.get("grupo_familiar");
@@ -70,6 +72,9 @@ export async function cadastrarUsuario(prevState: any, formData: FormData): Prom
 }
 
 
+// ####################
+// ==> Action para Logar  o usuário
+// ####################
 export async function logarUsuario(prevState: any, formData: FormData): Promise<ActionState> {
     const email = formData.get("email");
     const password = formData.get("senha");
@@ -126,4 +131,39 @@ export async function logarUsuario(prevState: any, formData: FormData): Promise<
     } else {
         redirect("/painel");
     }
+}
+
+// ####################
+// ==> Action para Criar Grupo Familia e atribuir ao usuário criador
+// ####################
+export async function atribuirGrupoFamiliar(prevState: any, formData: FormData): Promise<ActionState> {
+    const titulo = formData.get("titulo");
+
+    if (!titulo || typeof titulo !== "string") {
+        return {
+            error: "O título é obrigatório.",
+            status: 400,
+            payload: {titulo_return: ""}
+        };
+    }
+
+    const values = {
+        titulo_return: titulo as string
+    };
+    
+    try {
+        await client_axios.post("/grupos-familiares", {
+            titulo
+        })
+    } catch (error: any) {
+        const mensagemErro = error.response?.data?.detail || "Erro ao criar Grupo Familiar. Tente novamente."
+
+        return {
+            error: mensagemErro,
+            status: error.response?.status || 500,
+            payload: values
+        }
+    }
+
+    redirect("/painel");
 }
