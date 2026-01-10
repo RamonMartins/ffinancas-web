@@ -170,7 +170,6 @@ body {
 
 .navbar-index-width {
   max-width: 900px;
-  @apply py-0.5 px-2.5;
 }
 
 @media (max-width: 920px) {
