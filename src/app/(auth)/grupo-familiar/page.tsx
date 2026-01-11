@@ -2,7 +2,7 @@
 
 import { Metadata } from 'next';
 import GrupoFamiliarForm from '@/components/auth/GrupoFamiliarForm';
-import { client_axios } from '@/lib/axios';
+import { usuarioAtual } from '@/actions/usuarios';
 import { redirect } from 'next/navigation';
 
 export const metadata: Metadata = {
@@ -10,10 +10,13 @@ export const metadata: Metadata = {
 }
 
 export default async function GrupoFamiliarPage() {
-    const responseUser = await client_axios.get("/usuarios/me");
-    const userData = responseUser.data;
+    const { usuario, error } = await usuarioAtual();
 
-    if (userData.lider_familiar === false || userData.grupo_id !== null) {
+    if (error || !usuario) {
+        redirect("/entrar");
+    }
+
+    if (usuario.lider_familiar === false || usuario.grupo_id !== null) {
         redirect("/painel");
     }
 
