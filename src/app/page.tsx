@@ -1,7 +1,7 @@
 // app/page.tsx
 
 import type { Metadata } from "next";
-import Logo from '@/components/general/Logo2';
+import Logo from '@/components/general/Logo';
 import NavbarMenu from '@/components/general/NavbarMenu';
 
 export const metadata: Metadata = {
