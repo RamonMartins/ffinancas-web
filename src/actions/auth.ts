@@ -6,6 +6,7 @@ import { client_axios } from "@/lib/axios";
 import { redirect } from "next/navigation";
 import { ActionState } from "@/@types/forms";
 import { cookies } from "next/headers";
+import { revalidatePath } from "next/cache";
 
 // ####################
 // ==> Action para Cadastrar o usuário
@@ -134,36 +135,22 @@ export async function logarUsuario(prevState: any, formData: FormData): Promise<
 }
 
 // ####################
-// ==> Action para Criar Grupo Familia e atribuir ao usuário criador
+// ==> Action para usuário fazer logout
 // ####################
-export async function atribuirGrupoFamiliar(prevState: any, formData: FormData): Promise<ActionState> {
-    const titulo = formData.get("titulo");
-
-    if (!titulo || typeof titulo !== "string") {
-        return {
-            error: "O título é obrigatório.",
-            status: 400,
-            payload: {titulo_return: ""}
-        };
-    }
-
-    const values = {
-        titulo_return: titulo as string
-    };
-    
+export async function logoutUsuario() {
     try {
-        await client_axios.post("/grupos-familiares", {
-            titulo
-        })
+        await client_axios.post("/auth/logout");
     } catch (error: any) {
-        const mensagemErro = error.response?.data?.detail || "Erro ao criar Grupo Familiar. Tente novamente."
-
-        return {
-            error: mensagemErro,
-            status: error.response?.status || 500,
-            payload: values
-        }
+        console.error("Erro ao tentar fazer logout", error)
     }
 
-    redirect("/painel");
+    // Limpa o cookie do navegador do usuário
+    const userCookie = await cookies();
+    userCookie.delete("auth_token");
+    
+    // Limpa o cache de todas as rotas do site
+    revalidatePath("/", "layout");
+
+    redirect("/");
+
 }

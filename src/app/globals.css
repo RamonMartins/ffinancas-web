@@ -53,7 +53,7 @@
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --font-primary: var(--font-lexend-deca);
-  --color_primary_default: rgba(80, 150, 254, 0.8);
+  --color_primary_default: rgba(80, 150, 254);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
@@ -170,6 +170,7 @@ body {
 
 .navbar-index-width {
   max-width: 900px;
+  width: 100%;
 }
 
 @media (max-width: 920px) {

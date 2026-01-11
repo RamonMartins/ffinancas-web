@@ -2,7 +2,7 @@
 "use client";
 
 import { useActionState } from "react";
-import { atribuirGrupoFamiliar } from "@/actions/auth";
+import { atribuirGrupoFamiliar } from "@/actions/grupos_familiares";
 import { RefreshCw } from "lucide-react";
 
 
