@@ -1,6 +1,6 @@
 "use client";
 
-import ErrorView from "@/components/general/errorView";
+import ErrorView from "@/components/general/ErrorView";
 
 interface ErrorViewProps {
   error?: Error;

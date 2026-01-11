@@ -1,8 +1,8 @@
 // app/page.tsx
 
 import type { Metadata } from "next";
-import Logo from '@/components/general/logo';
-import NavbarMenu from '@/components/general/navbar-actions';
+import Logo from '@/components/general/Logo2';
+import NavbarMenu from '@/components/general/NavbarMenu';
 
 export const metadata: Metadata = {
   title: "Ferreira Finanças",

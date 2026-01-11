@@ -1,4 +1,4 @@
-// src/components/general/navbar-actions.tsx
+// src/components/general/NavbarMenu.tsx
 
 "use client";
 

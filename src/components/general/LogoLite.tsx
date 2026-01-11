@@ -1,4 +1,4 @@
-// components/general/logo.tsx
+// src/components/general/LogoLite.tsx
 
 'use client';
 

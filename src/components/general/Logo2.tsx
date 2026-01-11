@@ -1,4 +1,4 @@
-// components/general/logo.tsx
+// src/components/general/Logo.tsx
 
 'use client';
 

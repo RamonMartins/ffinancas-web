@@ -1,8 +1,8 @@
 // src/app/(auth)/layout.tsx
 
 import "./styles.css";
-import LogoLite from "@/components/general/logo_lite";
-import TituloDinamicoAuth from "@/components/auth/tituloDinamicoAuth";
+import LogoLite from "@/components/general/LogoLite";
+import TituloDinamicoAuth from "@/components/auth/TituloDinamicoAuth";
 
 export default function AuthLayout({ children, }: Readonly<{ children: React.ReactNode; }>) {
     return (
