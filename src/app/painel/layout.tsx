@@ -4,7 +4,7 @@ import { logoutUsuario } from "@/actions/auth";
 import { usuarioAtual } from "@/actions/usuarios";
 import MenuLateral from "@/components/painel/MenuLateral";
 import MenuTopo from "@/components/painel/MenuTopo";
-import Breadcumb from "@/components/painel/Breadcumb";
+import Breadcumb from "@/components/painel/Breadcrumb";
 
 export default async function RootLayout({ children, }: Readonly<{ children: React.ReactNode; }>) {
     const { usuario, error } = await usuarioAtual();

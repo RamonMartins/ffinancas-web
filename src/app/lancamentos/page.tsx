@@ -1,7 +1,7 @@
 // app/lancamentos/page.tsx
 import { LancamentoReadType } from '@/@types/lancamentos';
 import { AllLancamentos } from '@/actions/lancamentos';
-import CreateLancamentoForm from '@/components/lancamentos/Forms/LancamentoForm'
+import CreateLancamentoForm from '@/components/lancamentos/LancamentoForm'
 
 // Adicione metadados específicos para esta página
 export const metadata = {

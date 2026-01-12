@@ -38,7 +38,6 @@ export const config = {
         "/entrar",
         "/cadastrar",
         "/grupo-familiar",
-        "/painel/:path*",
-        "/perfil"
+        "/painel/:path*"
     ]
 };

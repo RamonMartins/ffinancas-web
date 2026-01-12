@@ -2,7 +2,7 @@
 
 import { Metadata } from "next";
 import Link from "next/link";
-import DespesasTable from "@/components/tables/DespesasTable";
+import DespesasTable from "@/components/despesas/DespesasTable";
 
 
 export const metadata: Metadata = {
