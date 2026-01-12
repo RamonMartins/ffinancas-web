@@ -8,7 +8,7 @@ import  '../../app/globals.css';
 export default function Logo()  {
     return(
         <Link href="/">
-            <div className="flex col-start-1 row-start-1 z-0 place-self-left font-rochester text-white items-center space-x-2" >
+            <div className="flex place-self-left font-rochester text-white items-center space-x-2" >
                 <div className='text-[40px] tracking-[6px] leading-[1em] min-width-to-hide'>
                     <span>
                         FF

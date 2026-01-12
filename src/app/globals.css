@@ -51,7 +51,7 @@
 
 :root {
   --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --foreground: rgba(45, 55, 72, 1);
   --font-primary: var(--font-lexend-deca);
   --color_primary_default: rgba(80, 150, 254);
   --card: oklch(1 0 0);
@@ -166,6 +166,10 @@ body {
 
 .btn-azul-global {
   @apply flex flex-wrap items-center justify-center bg-blue-500 text-white font-bold py-2 px-5 rounded-md hover:bg-blue-700 transition-colors shadow-md;
+}
+
+.btn-menu-lateral {
+    @apply flex flex-row items-center py-2 pl-2.5 gap-2.5 rounded-[10px]
 }
 
 .navbar-index-width {
