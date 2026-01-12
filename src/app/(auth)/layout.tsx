@@ -1,6 +1,5 @@
 // src/app/(auth)/layout.tsx
 
-import "./styles.css";
 import LogoLite from "@/components/general/LogoLite";
 import TituloDinamicoAuth from "@/components/auth/TituloDinamicoAuth";
 
