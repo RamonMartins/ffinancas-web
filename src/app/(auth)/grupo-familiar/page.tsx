@@ -16,7 +16,7 @@ export default async function GrupoFamiliarPage() {
         redirect("/entrar");
     }
 
-    if (usuario.lider_familiar === false || usuario.grupo_id !== null) {
+    if (usuario.lider_familiar === false || usuario.grupo_familiar_id !== null) {
         redirect("/painel");
     }
 

@@ -14,7 +14,7 @@ import { revalidatePath } from "next/cache";
 export async function cadastrarUsuario(prevState: any, formData: FormData): Promise<ActionState> {
     const nome = formData.get("nome");
     const email = formData.get("email");
-    let grupo_id = formData.get("grupo_familiar");
+    let grupo_familiar_id = formData.get("grupo_familiar");
     const lider_familiar = formData.get("lider") === "on"; // Grava na variável o resultado do teste lógico (true/false)
     const password = formData.get("senha");
     const confirmarSenha = formData.get("confirmar_senha");
@@ -22,7 +22,7 @@ export async function cadastrarUsuario(prevState: any, formData: FormData): Prom
     const values = {
         nome_return: nome as string,
         email_return: email as string,
-        grupo_return: grupo_id as string,
+        grupo_return: grupo_familiar_id as string,
         lider_return: lider_familiar as boolean
     }
 
@@ -34,7 +34,7 @@ export async function cadastrarUsuario(prevState: any, formData: FormData): Prom
         }
     }
 
-    if (!lider_familiar && grupo_id === "") {
+    if (!lider_familiar && grupo_familiar_id === "") {
         return {
             error: "Selecione um Grupo Familiar ou marque a opção de Líder.",
             status: 400,
@@ -43,8 +43,8 @@ export async function cadastrarUsuario(prevState: any, formData: FormData): Prom
     }
 
     // Se for líder ou se o select vier vazio, envia null para a API
-    if (lider_familiar || grupo_id === null) {
-        grupo_id = null;
+    if (lider_familiar || grupo_familiar_id === null) {
+        grupo_familiar_id = null;
     } 
     
     try {
@@ -52,7 +52,7 @@ export async function cadastrarUsuario(prevState: any, formData: FormData): Prom
         await client_axios.post("/auth/register", {
             nome,
             email,
-            grupo_id,
+            grupo_familiar_id,
             lider_familiar,
             password,
         });
@@ -127,7 +127,7 @@ export async function logarUsuario(prevState: any, formData: FormData): Promise<
     });
     const userData = userResponse.data;
 
-    if (userData.lider_familiar === true && userData.grupo_id === null) {
+    if (userData.lider_familiar === true && userData.grupo_familiar_id === null) {
         redirect("/grupo-familiar")
     } else {
         redirect("/painel");
