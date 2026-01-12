@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     title: 'Entrar',
 }
 
-export default async function EntrarPage() {
+export default function EntrarPage() {
     return (
         <EntrarForm />
     );

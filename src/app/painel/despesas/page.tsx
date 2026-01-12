@@ -1,10 +1,23 @@
+// src/app/painel/despesas/page.tsx
+
+import { Metadata } from "next";
+import Link from "next/link";
+import DespesasTable from "@/components/tables/DespesasTable";
+
+
+export const metadata: Metadata = {
+    title: "Despesas"
+}
+
 export default function DespesasTab() {
-  return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-4xl font-bold mb-6 text-indigo-700">💸 Despesas</h1>
-      <p className="text-lg text-gray-700">
-        Aqui você pode gerenciar todas as suas despesas. Adicione novas despesas, visualize detalhes e mantenha suas finanças organizadas.
-      </p>
-    </div>
-  );
+    return (
+        <div className="flex flex-col gap-2.5">
+            <h1 className="text-2xl font-roboto font-semibold">Despesas</h1>
+            <Link href="/painel/despesas/criar" className="btn-azul-global w-fit">Nova Despesa</Link>
+
+            <div className="flex flex-col bg-white rounded-md shadow-[0_0_15px_5px_rgba(0,0,0,0.1)] p-2">
+                <DespesasTable />
+            </div>
+        </div>
+    );
 }
