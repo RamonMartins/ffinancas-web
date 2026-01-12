@@ -10,7 +10,7 @@ export default async function RootLayout({ children, }: Readonly<{ children: Rea
     const { usuario, error } = await usuarioAtual();
 
     return (
-        <div className="flex flex-row bg-[#F2F5F7]">
+        <div className="min-h-screen flex flex-row bg-[#F2F5F7]">
             <div className="hidden lg:flex shrink-0">
                 <MenuLateral 
                     logoutAction={logoutUsuario}
@@ -21,7 +21,7 @@ export default async function RootLayout({ children, }: Readonly<{ children: Rea
                     usuarioLogado={usuario}
                     logoutAction={logoutUsuario}
                 />
-                <div className="flex flex-col p-2.5">
+                <div className="flex flex-col p-2.5 gap-2.5">
                     <Breadcumb />
                     {children}
                 </div>

@@ -10,9 +10,20 @@ export function dataMenu() {
         year: 'numeric',  // yyyy (2026)
     });
 
-    // Formata e capitaliza a primeira letra (opcional)
+    // Formata a nova data com o formato pré-definido acima
     const dataFormatada = formatador.format(dataAtual);
-    const dataFinal = dataFormatada.charAt(0).toUpperCase() + dataFormatada.slice(1);
 
-    return dataFinal.replace('.', '');
+    // Substitui o "." por "," e remove as preposições "de"
+    const dataLimpa = dataFormatada.replace('.', '').replaceAll(" de ", " ");
+
+    // Faz com que a primeira letra do dia da semana e do mês seja maiúscula
+    const dataFinal = dataLimpa.split(" ").map(palavra => {
+        if (isNaN(Number(palavra))) {
+            return palavra.charAt(0).toUpperCase() + palavra.slice(1);
+        }
+        return palavra;
+    }).join(" ");
+
+    // Retorna a data final formatada
+    return dataFinal;
 }

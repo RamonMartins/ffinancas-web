@@ -16,13 +16,19 @@ export const rochester = localFont({
   variable: '--font-rochester',
 });
 
+export const roboto = localFont({
+  src: '../../public/fonts/Roboto-VariableFont.ttf',
+  display: 'swap',
+  variable: '--font-roboto',
+});
+
 export const metadata: Metadata = {
   description: "Seu dashboard financeiro pessoal",
 };
 
 export default function RootLayout({ children, }: Readonly<{ children: React.ReactNode; }>) {
   return (
-    <html lang="pt-BR" className={`${lexendDeca.variable} ${rochester.variable} antialiased`}>
+    <html lang="pt-BR" className={`${lexendDeca.variable} ${rochester.variable} ${roboto.variable} antialiased`}>
       <body>
         {children}
       </body>

@@ -1,5 +1,15 @@
 /* src/app/globals.css */
 
+/*
+Prefixo	    Media Query (Largura Mínima)	    Uso Comum
+
+sm:	        640px (40rem)	                    Smartphones grandes / Tablets pequenos
+md:	        768px (48rem)	                    Tablets em modo retrato
+lg:	        1024px (64rem)	                    Laptops e Tablets em modo paisagem
+xl:	        1280px (80rem)	                    Monitores Desktop comuns
+2xl:	    1536px (96rem)	                    Monitores grandes ou Ultra-wide
+*/
+
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -137,6 +147,10 @@ body {
 
 .font-rochester {
   font-family: var(--font-rochester), cursive;
+}
+
+.font-roboto {
+  font-family: var(--font-roboto), cursive;
 }
 
 .div-col-global {
