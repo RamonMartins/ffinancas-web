@@ -1,11 +1,15 @@
 // src/components/carteiras/CarteirasTable.tsx
 
 import { CircleCheck, CircleMinus, DollarSign, Pencil } from "lucide-react";
+import { AllCarteirasMe } from "@/actions/carteiras";
 
 
 export default async function CarteirasTable() {
+    const { data: carteiras, error } = await AllCarteirasMe();
+
     return(
         <>
+            {carteiras.length}
             <div className="hidden md:flex flex-col w-full gap-2.5">
                { /* Card Web */ }
                 <div className="flex flex-row w-full p-2 justify-between rounded-md bg-(--color_primary_default)/10 shadow-[0_0_5px_1px_rgba(0,0,0,0.1)]">
