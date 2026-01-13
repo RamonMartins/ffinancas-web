@@ -7,26 +7,30 @@ import { redirect } from "next/navigation";
 import { ActionState } from "@/@types/forms";
 import { cookies } from "next/headers";
 import { revalidatePath } from "next/cache";
+import { UsuarioCreate, UsuarioCreateForm } from "@/@types/auth";
 
 // ####################
 // ==> Action para Cadastrar o usuário
 // ####################
 export async function cadastrarUsuario(prevState: any, formData: FormData): Promise<ActionState> {
-    const nome = formData.get("nome");
-    const email = formData.get("email");
-    let grupo_familiar_id = formData.get("grupo_familiar");
-    const lider_familiar = formData.get("lider") === "on"; // Grava na variável o resultado do teste lógico (true/false)
-    const password = formData.get("senha");
-    const confirmarSenha = formData.get("confirmar_senha");
 
-    const values = {
-        nome_return: nome as string,
-        email_return: email as string,
-        grupo_return: grupo_familiar_id as string,
-        lider_return: lider_familiar as boolean
+    const dadosForm: UsuarioCreateForm = {
+        nome: (formData.get("nome") as string) || "",
+        email: (formData.get("email") as string) || "",
+        password: (formData.get("senha") as string) || "",
+        confirmar_senha: (formData.get("confirmar_senha") as string) || "",
+        lider_familiar: formData.get("lider_familiar") === "on",
+        grupo_familiar_id: (formData.get("grupo_familiar_id") as string) || null
     }
 
-    if (password !== confirmarSenha) {
+    const values = {
+        nome_return: dadosForm.nome,
+        email_return: dadosForm.email,
+        lider_return: dadosForm.lider_familiar,
+        grupo_return: dadosForm.grupo_familiar_id || ""
+    }
+
+    if (dadosForm.password !== dadosForm.confirmar_senha) {
         return {
             error: "As senhas não coincidem.",
             status: 400,
@@ -34,28 +38,25 @@ export async function cadastrarUsuario(prevState: any, formData: FormData): Prom
         }
     }
 
-    if (!lider_familiar && grupo_familiar_id === "") {
+    if (!dadosForm.lider_familiar && dadosForm.grupo_familiar_id === null) {
         return {
             error: "Selecione um Grupo Familiar ou marque a opção de Líder.",
             status: 400,
             payload: values
         }
     }
-
-    // Se for líder ou se o select vier vazio, envia null para a API
-    if (lider_familiar || grupo_familiar_id === null) {
-        grupo_familiar_id = null;
-    } 
     
     try {
+        const payloadAPI: UsuarioCreate = {
+            nome: dadosForm.nome,
+            email: dadosForm.email,
+            password: dadosForm.password,
+            lider_familiar: dadosForm.lider_familiar,
+            grupo_familiar_id: dadosForm.grupo_familiar_id
+        }
+
         // Requisição para a API
-        await client_axios.post("/auth/register", {
-            nome,
-            email,
-            grupo_familiar_id,
-            lider_familiar,
-            password,
-        });
+        await client_axios.post("/auth/register", payloadAPI);
 
     } catch (error: any) {
         // Tratamento de erro específico do Axios
@@ -103,6 +104,7 @@ export async function logarUsuario(prevState: any, formData: FormData): Promise<
         // Salva o token nos cookies para as próximas requisições
         const cookieStore = await cookies();
 
+        // Persistência da sessão nos Cookies
         cookieStore.set("auth_token", token, {
             httpOnly: true,
             secure: process.env.NEXT_PUBLIC_ENVIRONMENT === "production",

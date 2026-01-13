@@ -42,7 +42,6 @@ export default function CadastroForm({ grupos }: { grupos: GrupoFamiliarRead[] }
                     placeholder='José da Silva'
                     className='input-global'
                     name='nome'
-                    id=''
                     defaultValue={state?.payload?.nome_return || ""}
                     required
                 />
@@ -63,8 +62,7 @@ export default function CadastroForm({ grupos }: { grupos: GrupoFamiliarRead[] }
                     <select
                         key={state?.payload?.grupo_return}
                         className='select-global'
-                        name='grupo_familiar'
-                        id=''
+                        name='grupo_familiar_id'
                         defaultValue={state?.payload?.grupo_return || ""}
                         required={!isLider}
                     >
@@ -85,8 +83,7 @@ export default function CadastroForm({ grupos }: { grupos: GrupoFamiliarRead[] }
                 <input
                     type='checkbox'
                     className='checkbox-global'
-                    name='lider'
-                    id='lider'
+                    name='lider_familiar'
                     defaultChecked={isLider}
                     onChange={(e) => setIsLider(e.target.checked)}
                 />
@@ -101,7 +98,6 @@ export default function CadastroForm({ grupos }: { grupos: GrupoFamiliarRead[] }
                     placeholder='jose.silva@gmail.com'
                     className='input-global'
                     name='email'
-                    id=''
                     defaultValue={state?.payload?.email_return || ""}
                     required
                 />
@@ -115,7 +111,6 @@ export default function CadastroForm({ grupos }: { grupos: GrupoFamiliarRead[] }
                         type='text'
                         className='input-global'
                         name='senha'
-                        id=''
                         required
                     />
                 </div>
@@ -125,7 +120,6 @@ export default function CadastroForm({ grupos }: { grupos: GrupoFamiliarRead[] }
                         type='text'
                         className='input-global'
                         name='confirmar_senha'
-                        id=''
                         required
                     />
                 </div>
