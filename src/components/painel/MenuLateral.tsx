@@ -1,7 +1,7 @@
 // src/components/painel/MenuLateral.tsx
 "use client"
 
-import { LayoutDashboard, LogOut, Receipt, User } from "lucide-react";
+import { LayoutDashboard, LogOut, Receipt, User, Wallet } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -18,6 +18,7 @@ export default function MenuLateral({logoutAction, onClose}: MenuLateralProps) {
     // Verifica em qual rota esta dentro de painel
     const isDespesas = rotaAtual.startsWith("/painel/despesas");
     const isReceitas = rotaAtual.startsWith("/painel/receitas");
+    const isCarteiras = rotaAtual.startsWith("/painel/carteiras");
     const isConta = rotaAtual.startsWith("/painel/conta");
 
     return (
@@ -90,6 +91,28 @@ export default function MenuLateral({logoutAction, onClose}: MenuLateralProps) {
                             <Receipt size={20} color={isDespesas ? "#fff" : "#A0AEC0"} />
                         </div>
                         <span className={`text-sm ${isDespesas ? "" : "text-[#A0AEC0]"}`}>Despesas</span>
+                    </Link>
+
+                    { /* Botão Carteiras */ }
+                    <Link
+                        href="/painel/carteiras"
+                        onClick={onClose}
+                        className={`group btn-menu-lateral
+                            ${isCarteiras
+                                ? "bg-(--color_primary_default)/20"
+                                : "bg-white hover:bg-(--color_primary_default)/7"
+                            }`}
+                    >
+                        <div
+                            className={`p-1.25 rounded-[10px]
+                                ${isCarteiras
+                                    ? "bg-(--color_primary_default)"
+                                    : "bg-white"
+                                }`}
+                        >
+                            <Wallet size={20} color={isCarteiras ? "#fff" : "#A0AEC0"} />
+                        </div>
+                        <span className={`text-sm ${isCarteiras ? "" : "text-[#A0AEC0]"}`}>Carteiras</span>
                     </Link>
                 </div>
             </div>
