@@ -1,5 +1,7 @@
 "use client";
 
+// PÁGINA DE ERRO GERAL
+
 import { AlertCircle, RefreshCw, Home } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useTransition } from "react";

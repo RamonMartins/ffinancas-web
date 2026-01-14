@@ -9,6 +9,12 @@ export const metadata: Metadata = {
 
 export default function CriarCarteira() {
     return (
-        <CarteirasCriarForm />
+        <div className="flex flex-col gap-2.5">
+            <h1 className="text-2xl font-roboto font-semibold">Nova Carteira</h1>
+
+            <div className="flex flex-col bg-white rounded-md shadow-[0_0_15px_5px_rgba(0,0,0,0.1)] p-2">
+                <CarteirasCriarForm />
+            </div>
+        </div>
     );
 }
