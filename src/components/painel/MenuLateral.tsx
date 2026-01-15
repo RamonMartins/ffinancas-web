@@ -150,7 +150,7 @@ export default function MenuLateral({logoutAction, onClose}: MenuLateralProps) {
                 }}>
                     <button
                         type="submit"
-                        className="group btn-menu-lateral w-full cursor-pointer bg-white hover:bg-(--color_primary_default)/7"
+                        className="group btn-menu-lateral w-full bg-white hover:bg-(--color_primary_default)/7"
                     >
                         <div
                             className="p-1.25 rounded-[10px] bg-white"

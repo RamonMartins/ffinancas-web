@@ -1,3 +1,4 @@
+
 // Formata valores numéricos para
 // 12.5  -> "R$ 12,50"
 // -12.5 -> "R$ -12,50"
@@ -10,3 +11,4 @@ export const moedaFormatada = (valor: number) => {
     maximumFractionDigits: 2,
   });
 };
+

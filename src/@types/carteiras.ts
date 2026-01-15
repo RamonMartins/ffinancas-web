@@ -7,3 +7,8 @@ export interface CarteirasRead {
     created_at: string;
     modified_at: string;
 }
+
+export interface CarteiraCreate {
+    titulo: string;
+    saldo: number | 0;
+}

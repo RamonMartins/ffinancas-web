@@ -32,7 +32,7 @@ export default async function CarteirasTable() {
                 const corCard = index % 2 === 0 ? "bg-(--color_primary_default)/10" : "bg-[#f2f2f2]"
 
                 return (
-                    <div className={`flex flex-col sm:flex-row w-full p-2 justify-between rounded-md ${corCard} shadow-[0_0_5px_1px_rgba(0,0,0,0.1)]`}>
+                    <div key={carteira.id} className={`flex flex-col sm:flex-row w-full p-2 justify-between rounded-md ${corCard} shadow-[0_0_5px_1px_rgba(0,0,0,0.1)]`}>
                         { /* Rótulo Título */ }
                         <div className="flex flex-col gap-1 w-[40%]">
                             <span className="text-muted-foreground text-sm after:content-[':'] sm:after:content-none">Título</span>

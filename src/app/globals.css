@@ -140,15 +140,15 @@ body {
 }
 
 .btn-azul-global {
-  @apply flex flex-wrap items-center justify-center bg-blue-500 text-white font-bold py-2 px-5 rounded-md hover:bg-blue-700 transition-colors shadow-md;
+  @apply flex flex-wrap items-center justify-center cursor-pointer bg-blue-500 text-white font-bold py-2 px-5 rounded-md hover:bg-blue-700 transition-colors shadow-md;
 }
 
 .btn-cinza-global {
-  @apply flex flex-wrap items-center justify-center bg-gray-300 font-bold py-2 px-5 rounded-md hover:bg-gray-400 transition-colors shadow-md;
+  @apply flex flex-wrap items-center justify-center cursor-pointer bg-gray-300 font-bold py-2 px-5 rounded-md hover:bg-gray-400 transition-colors shadow-md;
 }
 
 .btn-menu-lateral {
-    @apply flex flex-row items-center py-2 pl-2.5 gap-2.5 rounded-[10px]
+    @apply flex flex-row items-center cursor-pointer py-2 pl-2.5 gap-2.5 rounded-[10px]
 }
 
 .navbar-index-width {
