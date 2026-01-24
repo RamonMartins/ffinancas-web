@@ -21,7 +21,7 @@ export default async function RootLayout({ children, }: Readonly<{ children: Rea
                     usuarioLogado={usuario}
                     logoutAction={logoutUsuario}
                 />
-                <div className="flex flex-col p-2.5 gap-2.5">
+                <div className="h-full flex flex-col p-2.5 gap-2.5">
                     <Breadcumb />
                     {children}
                 </div>
